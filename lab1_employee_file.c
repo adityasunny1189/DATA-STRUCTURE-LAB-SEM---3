@@ -20,7 +20,7 @@ int main()
     char eid[20];
     printf("Welcome to employee datasheet\n");
     printf("Choose your choice\n");
-    printf("1.Read Data\n2.Display Data\n3.Search Data\n4.Exit\n");
+    printf("1.Display Data\n2.Read Data\n3.Search Data\n4.Exit\n");
     scanf("%d",&choice);
     switch(choice)
     {
@@ -46,6 +46,7 @@ void read_data(FILE *fp)
         printf("Error 404\n");
         return;
     }
+    fread(&E1,sizeof(struct Employee),1,fp);
 }
 
 void display_data(FILE *fp)
@@ -62,6 +63,8 @@ void display_data(FILE *fp)
         ch = getc(fp);
         printf("%c",ch);
     }
+    printf("\n");
+    fclose(fp);
 }
 
 void search_data(FILE *fp,char str[])
