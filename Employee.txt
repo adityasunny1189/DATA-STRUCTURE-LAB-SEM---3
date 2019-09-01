@@ -1,0 +1,4 @@
+NAME    ID   DEPT    SALARY
+
+Aditya  adi003  ISE 875900
+Rohan	ro058	ECE	293821
