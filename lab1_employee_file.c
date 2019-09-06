@@ -40,39 +40,45 @@ int main()
 
 void Write_data(FILE *fp)
 {
-    fp = fopen("Employee.txt","a");
+    char choice = 'y';
+    fp = fopen("Employee.txt","w");
     if(fp == NULL)
     {
         printf("Error 404\n");
         return;
     }
-    printf("Enter name id Department and Salary\n");
-    scanf("%s%s%s%d",E1.name,E1.id,E1.dept,&E1.salary);
-    // fwrite(&E1,sizeof(E1),1,fp);
-    fprintf(fp,"%s\t%s\t%s\t%d\n",E1.name,E1.id,E1.dept,E1.salary);
+    do{
+        printf("Enter name id Department and Salary\n");
+        scanf("%s%s%s%d",E1.name,E1.id,E1.dept,&E1.salary);
+        fwrite(&E1,sizeof(E1),1,fp);
+        //fprintf(fp,"%s\t%s\t%s\t%d\n",E1.name,E1.id,E1.dept,E1.salary);
+        printf("Do you want to input another data(y/n): ");
+        scanf(" %c",&choice);
+    }while(choice == 'y');
+    
     printf("\n");
     fclose(fp);
 }
 
 void display_data(FILE *fp)
 {
-    char ch;
+    // char ch;
     fp = fopen("Employee.txt","r");
     if(fp == NULL)
     {
         printf("Error 404\n");
         return;
     }
-    while(ch != EOF)
-    {
-        ch = getc(fp);             
-        printf("%c",ch);
-    }
-    //file can also be read in this way
-    // while(fread(&E1,sizeof(struct Employee),1,fp) == 1)
+    // while(ch != EOF)
     // {
-    //     printf("%s%s%s%d",E1.name,E1.id,E1.dept,E1.salary);
+    //     ch = getc(fp);             
+    //     printf("%c",ch);
     // }
+    // file can also be read in this way
+    while(fread(&E1,sizeof(struct Employee),1,fp) == 1)
+    {
+        printf("%s\t%s\t%s\t%d\n",E1.name,E1.id,E1.dept,E1.salary);
+    }
     printf("\n");
     fclose(fp);
 }
@@ -84,5 +90,17 @@ void search_data(FILE *fp,char str[])
     {
         printf("Error 404\n");
         return;
+    }
+    while(fread(&E1,sizeof(struct Employee),1,fp) != NULL)
+    {
+        if(E1.id == str)
+        {
+            printf("Found\n");
+            printf("%s%s%s%d",E1.name,E1.id,E1.dept,E1.salary);
+        }
+        else
+        {
+            printf("Not Found\n");
+        }
     }
 }
