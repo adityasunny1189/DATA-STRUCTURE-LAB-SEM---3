@@ -3,6 +3,8 @@
 
 #define MAX_SIZE 10
 
+int temp;
+
 struct stack
 {
     int arr[MAX_SIZE];
@@ -32,11 +34,11 @@ void push(struct stack *S1,int i)
     S1->arr[++S1->sp] == i;
 }
 
-int pop(struct stack *S1)
+void pop(struct stack *S1)
 {
     if(isEmptyStack(S1))
         printf("UNDERFLOW\n");
-    return (S1->arr[S1->sp--]);
+    temp  = S1->arr[S1->sp--];
 }
 
 void display(struct stack *S1)
@@ -62,8 +64,9 @@ int main()
                     scanf("%d",&element);
                     push(&S1,element);
                     break;
-            case 2:printf("poped element from stack is %d",pop(&S1));
-                    break;
+            case 2:pop(&S1);
+                   printf("poped element from stack is %d",temp);
+                   break;
             case 3:printf("Stack elements are \n");
                     display(&S1);
                     break;
