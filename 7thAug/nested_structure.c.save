@@ -1,0 +1,19 @@
+#include<stdio.h>
+int main()
+{
+    struct st
+    {
+        int a;
+        float b;
+        char c;
+    };
+    struct st st1 = {2,1.2,'a'};
+    struct str2
+    {
+        char ch;
+        struct st;
+    }st2;
+    printf("%d %f %c\n",st1.a,st1.b,st1.c);
+    printf("%d",st2.st1.a);
+    return 0;
+}
