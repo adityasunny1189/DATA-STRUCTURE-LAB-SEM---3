@@ -1,0 +1,120 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+#define MAX_SIZE 10
+
+struct stack
+{
+    int arr[MAX_SIZE];
+    int top;
+}S1;
+
+int isFull(struct stack *S1)
+{
+    if(S1->top == MAX_SIZE - 1)
+        return 1;
+    else
+        return 0;
+}
+printf("\n");
+int isEmpty(struct stack *S1)
+{
+    if(S1->top == -1)
+        return 1;
+    else
+        return 0;
+}
+
+void push(struct stack *S1,int i)
+{
+    int no;
+    char ch;
+    if(isFull(&S1))
+        printf("STACK OVERFLOW\n");
+    else
+    {
+        S1->arr[++S1->top] = i;
+        printf("Do you want to push Another no(y/n): ");
+        scanf(" %c",&ch);
+        switch(ch)
+        {
+            case 'y': printf("Enter no to push: ");
+                      scanf("%d",&no);
+                      push(S1,no);
+                      break;
+
+            case 'n': printf("THANK YOU\n");
+                      break;
+
+            default: printf("INVALID OPERATION\n");
+        }
+    }
+}
+
+int pop(struct stack *S1)
+{
+    if(isEmpty(&S1))
+        printf("STACK UNDERFLOW\n");
+    else
+        return (S1->arr[S1->top--]);
+}
+
+void display(struct stack *S1)
+{
+    for(int i = 0; i <= S1->top; i++)
+        printf("%d\t",S1->arr[i]);
+    printf("\n");
+}
+
+void isPalindrom(struct stack *S1)
+{
+    int p = 0;
+    for(int i = 0; i < S1->top / 2; i++)
+    {
+        if(S1->arr[i] == S1->arr[S1->top - i])
+            p++;
+        else
+            p--;
+    }
+    if(p == S1->top / 2)
+        printf("PALINDROME\n");
+    else
+        printf("NOT PALINDROME\n");
+}
+
+int main()
+{
+    S1.top = -1;
+    int choice,ele;
+    char cont;
+    do {
+        printf("STACK DATA STRUCTURE\n1.PUSH\n2.POP\n3.DISPLAY\n4.CHECK PALINDROM\n5.EXIT\nYOUR CHOICE: ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1: printf("Enter no to push: ");
+                    scanf("%d",&ele);
+                    push(&S1,ele);
+                    break;
+
+            case 2: printf("Pop up element is %d",pop(&S1));
+                    printf("\n");
+                    break;
+
+            case 3: printf("The given stack is \n");
+                    display(&S1);
+                    break;
+
+            case 4: printf("Given stack is: ");
+                    isPalindrom(&S1);
+                    break;
+
+            case 5: exit(0);
+
+            default: printf("INVALID OPERATION\n");
+        }
+        printf("Do you want to continue(y/n): ");
+        scanf(" %c",&cont);
+    }while(cont == 'y');
+    return 0;
+}
