@@ -1,0 +1,104 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Emp
+{
+    char name[20];
+    char dept[20];
+    int salary;
+    int age;
+    int id;
+}E1;
+
+void read_data(FILE *fp);
+void display_data(FILE *fp);
+void search_data(FILE *fp, int eid);
+
+int main()
+{
+    FILE *fp;
+    int eid;
+    read_data(fp);
+    display_data(fp);
+    printf("Enter the ID to search for employee\n");
+    scanf("%d",&eid);
+    search_data(fp,eid);
+}
+
+void read_data(FILE *fp)
+{
+    char choice = 'Y';
+    fp = fopen("new","a");
+    fprintf(fp,"Name\tDept\tSalary\tage\tId\n\n");
+    if(fp == NULL)
+    {
+        printf("File not found\n");
+        exit(1);
+    }
+    do{
+        printf("enter the Employee details(name/dept/salary/age/id)\n");
+        scanf("%s%s%d%d%d",E1.name,E1.dept,&E1.salary,&E1.age,&E1.id);
+        fprintf(fp,"%s\t%s\t%d\t%d\t%d\n",E1.name,E1.dept,E1.salary,E1.age,E1.id);
+        printf("Do you want to continue\n");
+        scanf(" %c",&choice);
+    }while(choice == 'Y');
+    printf("\n\n");
+    fclose(fp);
+}
+
+void display_data(FILE *fp)
+{
+    char ch;
+    fp = fopen("new","r");
+    if(fp == NULL)
+    {
+        printf("File not found\n");
+        exit(1);
+    }
+    while(ch != EOF)
+    {
+        ch = getc(fp);
+        printf("%c",ch);
+    }
+    printf("\n\n");
+    fclose(fp);
+}
+
+search_data(FILE *fp, int eid)
+{
+    int found = 0;
+    fp = fopen("new","r");
+    if(fp == NULL)
+    {
+        printf("File not found\n");
+        exit(1);
+    }
+    while((fread(&E1, sizeof(struct Emp),1,fp)) != EOF)
+    {
+        if(eid == E1.id)
+        {
+            found=1;
+            break;
+        }
+    }
+    if(found==1)
+    {
+        printf("File Found\n");
+    }
+    else
+    {
+        printf("File Not Found\n");
+    }
+    printf("\n\n");
+    fclose(fp);
+}
+
+
+
+
+
+
+
+
+
+

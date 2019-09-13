@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1568178737 source:d:\3rd semester\aditya_pathak (1si18is003)\11th_sep_stack\stack_implementation.c
+	<stdio.h>
+	<stdlib.h>
+
+1568181938 source:d:\3rd semester\aditya_pathak (1si18is003)\11th_sep_stack\infix_postfix_stack.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
