@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1566560026 source:d:\3rd semester\ritika(1si18is024)\empolyee.c
+	<stdio.h>
+	<stdlib.h>
+
+1566558016 source:d:\3rd semester\ritika(1si18is024)\p.c
+	<stdio.h>
+	<string.h>
+
