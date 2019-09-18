@@ -92,13 +92,13 @@ int main()
                         postfix[j] = ch;
                         j++;
                     }
-                    else if(ch == '(')
+                    else if(ch == ')')
                     {
                         S1.arr[++S1.top] = ch;
                     }
-                    else if(ch == ')')
+                    else if(ch == '(')
                     {
-                        while((ch = S1.arr[S1.top]) != '(')
+                        while((ch = S1.arr[S1.top]) != ')')
                         {
                             postfix[j++] = S1.arr[S1.top];
                             S1.top--;
