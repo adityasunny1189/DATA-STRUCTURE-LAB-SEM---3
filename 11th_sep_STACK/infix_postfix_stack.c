@@ -62,7 +62,7 @@ void precedence(char ch)
 int main()
 {
     int choice;
-    char cont;
+    char cont;printf("\n");
     char infix[30];
     do {
         printf("Enter the Infix expression: ");

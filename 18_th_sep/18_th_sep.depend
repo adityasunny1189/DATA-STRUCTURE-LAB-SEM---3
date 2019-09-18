@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1568782014 source:d:\3rd semester\aditya_pathak (1si18is003)\18_th_sep\postfix_conversion.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+
+1568784758 source:d:\3rd semester\aditya_pathak (1si18is003)\18_th_sep\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+

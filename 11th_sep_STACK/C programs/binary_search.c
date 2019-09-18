@@ -1,0 +1,21 @@
+#include<stdio.h>
+int main() {
+    int array[1000];
+    printf("enter the length of the array\n");
+    int max;
+    scanf("%d",&max);
+    int i;
+    printf("enter array elements\n");
+    for (i=0; i<max; i++)
+    {
+       scanf("%d",array[i]);
+    }
+    printf("enter the no to search\n");
+    int no;
+    scanf("%d",&no);
+    int low = 0;
+    int mid;
+    int high =
+
+
+}
