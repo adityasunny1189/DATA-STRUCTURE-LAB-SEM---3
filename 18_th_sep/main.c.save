@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<ctype.h>
+#include<string.h>
 
 struct stack
 {
@@ -81,9 +82,55 @@ int main()
                 postfix[j] = '\0';
                 printf("%s",postfix);
                 break;
-        case 2:
-            
+
+        case 2: strrev(infix);
+                while(infix[i] != '\0')
+                {
+                    ch = infix[i];
+                    if(isdigit(ch) || isalpha(ch))
+                    {
+                        postfix[j] = ch;
+                        j++;
+                    }
+                    else if(ch == '(')
+                    {
+                        S1.arr[++S1.top] = ch;
+                    }
+                    else if(ch == ')')
+                    {
+                        while((ch = S1.arr[S1.top]) != '(')
+                        {
+                            postfix[j++] = S1.arr[S1.top];
+                            S1.top--;
+                        }
+                        S1.top--;
+                    }
+                    else
+                    {
+                        if(prec(ch) < prec(S1.arr[S1.top]))
+                        {
+                            postfix[j++] = S1.arr[S1.top--];
+                        }
+                        else if(prec(ch) == prec(S1.arr[S1.top]))
+                        {
+                            postfix[j++] = S1.arr[S1.top--];
+                            S1.arr[++S1.top] = ch;
+                        }
+                        else
+                            S1.arr[++S1.top] = ch;
+                    }
+                    i++;
+            }
+                while((ch=S1.arr[S1.top]) != '#')
+                {
+                    postfix[j++] = S1.arr[S1.top];
+                    S1.top--;
+                }
+                postfix[j] = '\0';
+                printf("%s",postfix);
+                break;
+        
         default:printf("Invalid Command\n");
     }
-    
+
 }
