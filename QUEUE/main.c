@@ -65,7 +65,7 @@ int main()
     char cont;
     struct Queue Q;
     Q.rear = Q.front = -1;
-    printf("Circular Queue Implementation\n");
+    printf("Queue Implementation\n");
     do
     {
         printf("Enter your choice\n1.EQUEUE\n2.DQUEUE\n3.DISPLAY\n4.EXIT\nChoice: ");
