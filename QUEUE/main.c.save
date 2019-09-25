@@ -34,8 +34,6 @@ void Equeue(struct Queue *Q, int no)
     }
     Q->rear++;
     Q->arr[Q->rear] = no;
-    if(Q->front == -1)
-        Q->front++;
 }
 
 void Dqueue(struct Queue *Q)

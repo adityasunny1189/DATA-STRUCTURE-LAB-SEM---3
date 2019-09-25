@@ -33,6 +33,8 @@
 		</Compiler>
 		<Unit filename="infix_postfix_stack.c">
 			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
 		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
@@ -42,9 +44,6 @@
 		</Unit>
 		<Unit filename="stack_implementation.c">
 			<Option compilerVar="CC" />
-			<Option compile="0" />
-			<Option link="0" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Extensions>
 			<code_completion />
