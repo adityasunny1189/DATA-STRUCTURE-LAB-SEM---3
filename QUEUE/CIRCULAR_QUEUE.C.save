@@ -19,11 +19,21 @@ int isEmpty(struct Queue *Q)
 int isFull(struct Queue *Q)
 {
     //if((Q->rear + 1) % SIZE == Q->front)
-    if(Q->rear == SIZE - 1)
+    if((Q->front == 0 && Q->rear == SIZE - 1) || (Q->front - Q->rear == 1))
         return 1;
     else
         return 0;
 }
+
+/*int spaceAvailable(struct Queue *Q)
+{
+
+}
+
+int spaceNotAvailable(struct Queue *Q)
+{
+
+}*/
 
 void Equeue(struct Queue *Q, int no)
 {
@@ -32,13 +42,10 @@ void Equeue(struct Queue *Q, int no)
         printf("Queue Overflow\n");
         exit(1);
     }
-    if(Q->rear < SIZE - 1)
-    {
-        Q->rear++;
-        Q->arr[Q->rear] = no;
-    }
     if(Q->front == -1)
         Q->front++;
+    if((Q->rear < SIZE - 1) || ((Q->rear + 1) < Q->front))
+        Q->arr[++Q->rear] = no;
 }
 
 void Dqueue(struct Queue *Q)
@@ -48,15 +55,28 @@ void Dqueue(struct Queue *Q)
         printf("Queue Underflow\n");
         exit(2);
     }
-    Q->front++;
+    if(Q->front == SIZE - 1)
+        Q->front = 0;
+    else
+        Q->front++;
 }
 
 void DisplayQueue(struct Queue *Q)
 {
-    for(int i = Q->front ; i <= Q->rear ; i++)
+    if(Q->rare > Q->front)
     {
-        printf("%d\t",Q->arr[i]);
+        for(int i = Q->front ; i < Q.rear ; i++)
+        {
+            printf("%d\t",Q->arr[i]);
+        }
     }
+    else if(Q->front > Q->rare)
+    {
+        for(int j = Q->front ; j < SIZE -1 ; j++)
+            printf("%d\t",Q->arr[i]);
+        for()
+    }
+    
 }
 
 int main()
@@ -65,7 +85,7 @@ int main()
     char cont;
     struct Queue Q;
     Q.rear = Q.front = -1;
-    printf("Circular Queue Implementation\n");
+    printf("Queue Implementation\n");
     do
     {
         printf("Enter your choice\n1.EQUEUE\n2.DQUEUE\n3.DISPLAY\n4.EXIT\nChoice: ");
@@ -77,7 +97,7 @@ int main()
                     Equeue(&Q,no);
                     break;
 
-            case 2: printf("Deleting First Element\n");
+            case 2: printf("Deleted first element\n");
                     Dqueue(&Q);
                     break;
 

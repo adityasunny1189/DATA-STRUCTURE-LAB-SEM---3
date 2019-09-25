@@ -1,5 +1,9 @@
 # depslib dependency file v1.0
-1569388140 source:d:\3rd semester\aditya_pathak (1si18is003)\data-structure-lab-sem---3\queue\main.c
+1569391379 source:d:\3rd semester\aditya_pathak (1si18is003)\data-structure-lab-sem---3\queue\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1569393534 source:d:\3rd semester\aditya_pathak (1si18is003)\data-structure-lab-sem---3\queue\circular_queue.c
 	<stdio.h>
 	<stdlib.h>
 
