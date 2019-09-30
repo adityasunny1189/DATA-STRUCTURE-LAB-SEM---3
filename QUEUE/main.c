@@ -18,8 +18,7 @@ int isEmpty(struct Queue *Q)
 
 int isFull(struct Queue *Q)
 {
-    //if((Q->rear + 1) % SIZE == Q->front)
-    if(Q->rear == SIZE - 1)
+    if((Q->rear + 1) % SIZE == Q->front)
         return 1;
     else
         return 0;
