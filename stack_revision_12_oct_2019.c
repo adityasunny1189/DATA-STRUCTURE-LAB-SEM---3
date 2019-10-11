@@ -3,7 +3,7 @@
 
 
 //declaring the size of stack
-#define size 5
+#define size 10
 
 
 //creating stack
@@ -111,7 +111,7 @@ int sumOfstackElements(struct stack st)
 int reverseStack(struct stack *st)
 {
     int temp1 , pos = st->top;
-    for(int i = 0 ; i <= pos / 2 ; i++)
+    for(int i = 0 ; i <= st->top / 2 ; i++)
     {
         temp1 = st->data[i] ;
         st->data[i] = st->data[pos];
