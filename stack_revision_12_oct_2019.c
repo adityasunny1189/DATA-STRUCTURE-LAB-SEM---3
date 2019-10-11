@@ -121,18 +121,24 @@ int reverseStack(struct stack *st)
     return 1;
 }
 
+//know the top position of the stack
+int topPosition(struct stack st)
+{
+    return st.top;
+}
+
 //Palindrom Checker for stack
 int checkPalindrom(struct stack st)
 {
-    int pal = 0 ;
+    int pal = 0 , pos = st.top;
     int check = st.top/2;
-    for(int i = 0 ; i < st.top / 2 ; i++)
+    for(int i = 0 ; i < topPosition(st) / 2 ; i++)
     {
-        if(st.data[i] == st.data[st.top])
+        if(st.data[i] == st.data[pos])
             pal++;
         else
             pal--;
-        st.top--;
+        pos--;
     }
     if(pal == check)
         return 1;
