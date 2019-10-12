@@ -29,14 +29,14 @@ int main()
     if(pid == 0)
     {
         printf("Child: In child process\n");
-        printf("Child: child process ID : %d\n",getppid());
-        printf("Child: Parent process ID : %d\n",getpid());
+        printf("Child: child process ID : %d\n",getpid());
+        printf("Child: Parent process ID : %d\n",getppid());
     }
     else
     {
         printf("Parent: In Parent Process\n");
         printf("Parent: Parent process ID: %d\n",getpid());
-        printf("Parent: Child process ID: %d\n",getppid());
+        printf("Parent: Child process ID: %d\n",pid);
     }
     
     
