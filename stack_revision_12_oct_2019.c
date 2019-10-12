@@ -3,12 +3,13 @@
 
 
 //declaring the size of stack
-#define size 10
+// #define size 10
 
 
 //creating stack
 struct stack
 {
+    int size;
     int data[size];
     int top;
 };
@@ -179,7 +180,10 @@ int minStackElement(struct stack st)
 //Deleting the bottom Element
 // int deleteBottomElement(struct stack *st)
 // {
+//     for(int i = st->top ; i != 0 ; i--)
+//     {
 
+//     }
 // }
 
 // //Delete the middle Element
@@ -201,6 +205,9 @@ int main()
     int choice ;
     char do_you_want_to_continue;
     printf("STACK IMPLEMENTATION\n");
+    printf("Enter the size of stack : ");
+    scanf("%d",&st.size);
+    (struct stack *)malloc(st.size * sizeof(struct stack));
     do
     {
         printf("Available commands:-\n1.push Element\n2.Pop Element\n3.Display Stack\n4.Top Element\n5.Bottom Element\n6.Middle Element\n7.Sum of stack Element\n8.Reverse Stack\n9.Palindrom Checker\n10.Max Element\n11.Min Element\n12.Deleting the stack\n13.Deleting the first element\n14.Deleting the middle element\n15.exit program\nEnter Your choice: ");
