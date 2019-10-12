@@ -61,7 +61,7 @@ int pop(ST *st)
         printf("!Stack Underflow\n");
         exit(1);
     }
-    int ele = st->data[st->top--];
+    char ele = st->data[st->top--];
     return ele;
 }
 
@@ -82,14 +82,18 @@ int main()
         {
             postfix[j++] = infix[i];
         }
+        else if(infix[i] == '(')
+        {
+            push(&st, infix[i]);
+        }
         else if(infix[i] == ')')
         {
             while(st.data[st.top] != '(')
             {
-                postfix[j++] == pop(&st);
+                postfix[j++] = pop(&st);
             }
+            st.top--;
         }
-        // else if(ischar(infix[i]))
         else
         {
             if(prec(infix[i]) >= prec(st.data[st.top]))
@@ -103,10 +107,9 @@ int main()
             }
         }
     }
-    // int j = strlen(postfix);
     while(st.data[st.top] != '#')
     {
-      postfix[j++] = pop(&st);
+        postfix[j++] = pop(&st);
     }
     printf("Infix : %s has Postfix : %s\n",infix,postfix);
 }
