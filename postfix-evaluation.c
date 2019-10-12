@@ -86,7 +86,8 @@ int main()
             var2 = pop(&st);
             var1 = pop(&st);
             res = evaluation(var1,postfix[i],var2);
+            push(&st, res);
         }
     }
-    printf("Ans is %d\n",res);
+    printf("Ans is %d\n",st.data[st.top]);
 }
