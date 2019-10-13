@@ -5,7 +5,7 @@
 
 struct stack
 {
-    int data[size];
+    float data[size];
     int top;
 };
 typedef struct stack ST;
@@ -31,7 +31,7 @@ int isEmptyStack(struct stack *st)
 
 
 //pushing a element on top of stack
-void push(struct stack *st , int ele)
+void push(struct stack *st , float ele)
 {
     if(isFullStack(st))
     {
@@ -50,11 +50,11 @@ int pop(struct stack *st)
         printf("!Stack Underflow\n");
         exit(1);
     }
-    int ele = st->data[st->top--];
+    float ele = st->data[st->top--];
     return ele;
 }
 
-int evaluation(int var1 , char ch , int var2)
+int evaluation(float var1 , char ch , float var2)
 {
     switch(ch)
     {
@@ -62,7 +62,31 @@ int evaluation(int var1 , char ch , int var2)
         case '-': return (var1 - var2);
         case '*': return (var1 * var2);
         case '/': return (var1 / var2);
+        // case '%': return (var1 % var2);
+        default : printf("Invalid Command\n");
+                  exit(1);
     }
+}
+
+int validationPostfix(char string[])
+{
+    int operand = 0, operator = 0;
+    for(int i = 0 ; i < strlen(string) ; i++)
+    {
+        if(isalpha(string[i]))
+        {
+            operand++;
+        }
+        else
+        {
+            operator++;
+        }
+    }
+    if(operator + 1 == operand)
+    {
+        return 1;
+    }
+    return 0;
 }
 
 int main()
@@ -70,7 +94,12 @@ int main()
     char postfix[30];
     printf("Enter a valid postfix statement: ");
     scanf("%s",postfix);
-    int var1 , var2 , res , argument;
+    if(!validationPostfix(postfix))
+    {
+        printf("invalid Postfix Expression\n");
+        exit(1);
+    }
+    float var1 , var2 , res , argument;
     ST st;
     st.top = -1;
     for(int i = 0 ; i < strlen(postfix) ; i++)
@@ -78,7 +107,7 @@ int main()
         if(isalpha(postfix[i]))
         {
             printf("Enter value of %c : ",postfix[i]);
-            scanf("%d",&argument);
+            scanf("%f",&argument);
             push(&st, argument);
         }
         else
@@ -89,5 +118,5 @@ int main()
             push(&st, res);
         }
     }
-    printf("Ans is %d\n",st.data[st.top]);
+    printf("Ans is %.2f\n",st.data[st.top]);
 }
