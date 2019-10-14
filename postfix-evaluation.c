@@ -62,7 +62,6 @@ int evaluation(float var1 , char ch , float var2)
         case '-': return (var1 - var2);
         case '*': return (var1 * var2);
         case '/': return (var1 / var2);
-        // case '%': return (var1 % var2);
         default : printf("Invalid Command\n");
                   exit(1);
     }
