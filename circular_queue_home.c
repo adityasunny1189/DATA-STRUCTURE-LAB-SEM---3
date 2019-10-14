@@ -73,6 +73,11 @@ void Dqueue(struct Queue *Q)
 
 void Display(struct Queue Q)
 {
+  if(isEmpty(&Q))
+  {
+    printf("Queue Empty!\n");
+    exit(1);
+  }
   if(Q.rear == size - 1)
   {
     for(int i = Q.front ; i <= Q.rear ; i++)
@@ -83,6 +88,11 @@ void Display(struct Queue Q)
     for(int i = Q.front ; i <= size - 1 ; i++)
       printf("%d\t",Q.data[i]);
     for(int i = 0 ; i <= Q.rear ; i++)
+      printf("%d\t",Q.data[i]);
+  }
+  else if(Q.front < Q.rear)
+  {
+    for(int i = Q.front ; i <= Q.rear ; i++)
       printf("%d\t",Q.data[i]);
   }
   else if(Q.rear == Q.front)
