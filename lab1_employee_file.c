@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 struct Employee
 {
@@ -55,7 +56,7 @@ void Write_data(FILE *fp)
         printf("Do you want to input another data(y/n): ");
         scanf(" %c",&choice);
     }while(choice == 'y');
-    
+
     printf("\n");
     fclose(fp);
 }
@@ -71,11 +72,11 @@ void display_data(FILE *fp)
     }
     // while(ch != EOF)
     // {
-    //     ch = getc(fp);             
+    //     ch = getc(fp);
     //     printf("%c",ch);
     // }
     // file can also be read in this way
-    while(fread(&E1,sizeof(struct Employee),1,fp) == 1)
+    while(fread(&E1,sizeof(E1),1,fp) == 1)
     {
         printf("%s\t%s\t%s\t%d\n",E1.name,E1.id,E1.dept,E1.salary);
     }
@@ -93,10 +94,10 @@ void search_data(FILE *fp,char str[])
     }
     while(fread(&E1,sizeof(struct Employee),1,fp) != NULL)
     {
-        if(E1.id == str)
+        if(!strcmp(E1.id,str))
         {
             printf("Found\n");
-            printf("%s%s%s%d",E1.name,E1.id,E1.dept,E1.salary);
+            printf("%s\t%s\t%s\t%d\n",E1.name,E1.id,E1.dept,E1.salary);
         }
         else
         {
