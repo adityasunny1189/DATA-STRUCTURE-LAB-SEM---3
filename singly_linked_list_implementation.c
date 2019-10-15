@@ -7,27 +7,28 @@ struct Node
   struct Node *next;
 };
 
-void insertElementInLinkedList(struct Node **head , int ele , int pos)
+typedef struct Node NODE;
+
+void insert(NODE **head , int ele , int pos)
 {
+  NODE *p , *q , *newNode;
   int k = 1;
-  struct Node *p , *q , *newNode;
-  newNode = (struct Node *)malloc(sizeof(struct Node));
+  newNode = (NODE *)malloc(sizeof(NODE));
   if(!newNode)
   {
     printf("Memory Allocation Error\n");
-    return ;
+    exit(1);
   }
-  p = *head;
   newNode->data = ele;
+  p = *head;
   if(pos == 1)
   {
     newNode->next = p;
     *head = newNode;
-    return;
   }
   else
   {
-    while(k < pos)
+    while((p != NULL) && (k < pos))
     {
       k++;
       q = p;
@@ -35,100 +36,99 @@ void insertElementInLinkedList(struct Node **head , int ele , int pos)
     }
     q->next = newNode;
     newNode->next = p;
-    return;
-  }
-  q = *head;
-  while(q != NULL)
-  {
-    q = q->next;
-  }
-  q->next = newNode;
-  newNode->next = NULL;
-}
-
-void displayLinkedList(struct Node **head)
-{
-  struct Node *i;
-  i = *head;
-  while(i != NULL)
-  {
-    printf("%d",i->data);
-    i = i->next;
   }
 }
 
-int deleteElementInLinkedList(struct Node **head, int pos)
+int delete(NODE **head , int pos)
 {
-  int k = 1, ele;
-  struct Node *p, *q;
+  NODE *p , *q ;
+  int k = 1;
+  int ele;
   p = *head;
+  if(p == NULL)
+  {
+    printf("Can't Delete from empty list\n");
+    exit(1);
+  }
   if(pos == 1)
   {
+    *head = (*head)->next;
     ele = p->data;
-    *head = p->next;
     free(p);
   }
   else
   {
-    while(k < pos)
+    while((p != NULL) && (k < pos))
     {
       k++;
-      q = p ;
+      q = p;
       p = p->next;
     }
     if(p == NULL)
     {
-      printf("Position not found\n");
+      printf("Position Not Found\n");
       exit(1);
     }
     else
     {
-      ele = p->data;
       q->next = p->next;
+      ele = p->data;
       free(p);
     }
   }
   return ele;
 }
 
+void Display(NODE *head)
+{
+  NODE *p;
+  p = head;
+  if(p == NULL)
+  {
+    printf("Empty LIST\n");
+    exit(1);
+  }
+  do {
+    printf("%d\t",p->data);
+    p = p->next;
+  } while(p != NULL);
+  printf("\n");
+}
+
 int main()
 {
-  struct Node *head;
-
-  printf("SINGLY LINKED LIST IMPLEMENTATION\n");
+  NODE *head = NULL;
   int choice;
-  char cnt;
+  char ch;
   do {
-    printf("1.Insert\n2.Delete\n3.Display\n4.Exit\nChoice : ");
+    printf("1.Insert\n2.Delete\n3.Display\nChoice: ");
     scanf("%d",&choice);
     switch(choice)
     {
-      case 1: printf("Choice to Insert no in Linked List\n");
-              printf("Enter no to Insert: ");
+      case 1: printf("Insert Call\n");
               int ele, pos;
+              printf("Enter Element : ");
               scanf("%d",&ele);
-              printf("Enter the position: ");
+              printf("Enter Position: ");
               scanf("%d",&pos);
-              insertElementInLinkedList(&head, ele, pos);
+              insert(&head , ele , pos);
               break;
 
-      case 2: printf("Choice to delete the node\n");
-              printf("Enter the position of node to delete: ");
+      case 2: printf("Delete Call\n");
+              printf("Enter position: ");
               int position;
               scanf("%d",&position);
-              printf("Deleted Node Element is: %d",deleteElementInLinkedList(&head, position));
+              printf("Deleted Element is %d\n",delete(&head , position));
               break;
 
-      case 3: printf("Linked List is: ");
-              displayLinkedList(&head);
+      case 3: printf("Display Call\n");
+              Display(head);
               break;
 
-      case 4: exit(0);
-
-      default : printf("Invalid Choice!");
+      default: printf("Invalid Choice\n");
     }
-    printf("Do you Want to continue(y/n): ");
-    scanf("%c",&cnt);
-  } while(cnt = 'y');
+    printf("Do you want to continue(y/n): ");
+    scanf(" %c",&ch);
+  } while(ch == 'y');
   return 0;
 }
