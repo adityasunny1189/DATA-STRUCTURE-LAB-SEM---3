@@ -95,13 +95,28 @@ void Display(NODE *head)
   printf("\n");
 }
 
+void reverse(NODE **head)
+{
+  NODE *current, *prev, *next;
+  current = *head;
+  prev = NULL;
+  while(current != NULL)
+  {
+    next = current->next;
+    current->next = prev;
+    prev = current;
+    current = next;
+  }
+  *head = prev;
+}
+
 int main()
 {
   NODE *head = NULL;
   int choice;
   char ch;
   do {
-    printf("1.Insert\n2.Delete\n3.Display\nChoice: ");
+    printf("1.Insert\n2.Delete\n3.Display\n4.Reverse\nChoice: ");
     scanf("%d",&choice);
     switch(choice)
     {
@@ -123,6 +138,9 @@ int main()
 
       case 3: printf("Display Call\n");
               Display(head);
+              break;
+
+      case 4: reverse(&head);
               break;
 
       default: printf("Invalid Choice\n");
