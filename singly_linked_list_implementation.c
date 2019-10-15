@@ -44,5 +44,25 @@ void insertElementInLinkedList(struct Node **head , int ele , int pos)
 int main()
 {
   printf("SINGLY LINKED LIST IMPLEMENTATION\n");
+  int choice;
+  char cnt;
+  do {
+    printf("1.Insert\n2.Delete\n3.Display\n4.Exit\nChoice : ");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+      case 1:
+
+      case 2:
+
+      case 3:
+
+      case 4: exit(0);
+
+      default : printf("Invalid Choice!");
+    }
+    printf("Do you Want to continue(y/n): ");
+    scanf("%c",&cnt);
+  } while(cnt = 'y');
   return 0;
 }
