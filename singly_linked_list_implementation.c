@@ -41,8 +41,20 @@ void insertElementInLinkedList(struct Node **head , int ele , int pos)
   newNode->next = NULL;
 }
 
+void displayLinkedList(struct Node *head)
+{
+  struct Node *i;
+  i = head;
+  while(i != NULL)
+  {
+    printf("%d",i.data);
+    i = i->next;
+  }
+}
+
 int main()
 {
+  struct Node *head;
   printf("SINGLY LINKED LIST IMPLEMENTATION\n");
   int choice;
   char cnt;
