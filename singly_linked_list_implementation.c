@@ -110,13 +110,26 @@ void reverse(NODE **head)
   *head = prev;
 }
 
+int addList(NODE *head)
+{
+  int sum = 0;
+  NODE *p;
+  p = head;
+  while(p != NULL)
+  {
+    sum += p->data;
+    p = p->next;
+  }
+  return sum;
+}
+
 int main()
 {
   NODE *head = NULL;
   int choice;
   char ch;
   do {
-    printf("1.Insert\n2.Delete\n3.Display\n4.Reverse\nChoice: ");
+    printf("1.Insert\n2.Delete\n3.Display\n4.Reverse\n5.Add List\nChoice: ");
     scanf("%d",&choice);
     switch(choice)
     {
@@ -141,6 +154,9 @@ int main()
               break;
 
       case 4: reverse(&head);
+              break;
+
+      case 5: printf("The sum of elements of Linked List is : %d\n",addList(head));
               break;
 
       default: printf("Invalid Choice\n");
