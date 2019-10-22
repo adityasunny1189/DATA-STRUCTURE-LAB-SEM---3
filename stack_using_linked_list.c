@@ -1,36 +1,37 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct stack
+struct Node
 {
   int data;
-  struct stack *next;
+  struct Node *next;
 };
+
+typedef struct Node NODE;
 
 // struct stack *createStack()
 // {
 //   return NULL;
 // }
 
-void insert(struct stack **top, int data)
+void insert(NODE **top, int data)
 {
-  struct stack *temp;
-  temp = malloc(sizeof(struct stack));
+  NODE *temp;
+  temp = (NODE *)malloc(sizeof(NODE));
   if(!temp)
   {
     printf("Memory allocation error\n");
     return ;
   }
-  temp = *top;
   temp->data = data;
   temp->next = *top;
   *top = temp;
 }
 
-int delete(struct stack **top)
+int delete(NODE **top)
 {
   int data;
-  struct stack *temp;
+  NODE *temp;
   temp = *top;
   if(temp == NULL)
   {
@@ -43,7 +44,7 @@ int delete(struct stack **top)
   return data;
 }
 
-void display(struct stack *top)
+void display(NODE *top)
 {
   if(top == NULL)
   {
@@ -53,6 +54,7 @@ void display(struct stack *top)
   while(top != NULL)
   {
     printf("%d-->",top->data);
+    top = top->next;
   }
   printf("\n");
 }
@@ -61,7 +63,7 @@ int main()
 {
   char ch;
   int ele;
-  struct stack *top = NULL;
+  NODE *top = NULL;
   do {
     int choice;
     printf("1.Insert\n2.Delete\n3.Display\nChoice : ");
@@ -73,7 +75,7 @@ int main()
               insert(&top,ele);
               break;
 
-      case 2: printf("Deleted element is %d",delete(&top));
+      case 2: printf("Deleted element is %d\n",delete(&top));
               break;
 
       case 3: printf("The stack is : \n");
