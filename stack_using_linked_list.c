@@ -9,11 +9,6 @@ struct Node
 
 typedef struct Node NODE;
 
-// struct stack *createStack()
-// {
-//   return NULL;
-// }
-
 void insert(NODE **top, int data)
 {
   NODE *temp;
@@ -35,8 +30,7 @@ int delete(NODE **top)
   temp = *top;
   if(temp == NULL)
   {
-    printf("Empty List\n");
-    return ;
+    return 0;
   }
   *top = (*top)->next;
   data = temp->data;
