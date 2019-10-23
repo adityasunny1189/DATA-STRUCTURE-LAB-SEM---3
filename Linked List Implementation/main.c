@@ -1,0 +1,95 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+typedef struct Node NODE;
+
+void insert(NODE **top, int data)
+{
+    NODE *temp;
+    temp = (NODE *)malloc(sizeof(NODE));
+    if(!temp)
+    {
+        printf("Memory Allocation Error\n");
+        return;
+    }
+    temp->data = data;
+    temp->next = *top;
+    *top = temp;
+}
+
+int delete(NODE **top)
+{
+    int ele;
+    NODE *temp;
+    temp = *top;
+    if(temp == NULL)
+    {
+        return 0;
+    }
+    ele = temp->data;
+    *top = temp->next;
+    free(temp);
+    return ele;
+}
+
+void display(NODE *top)
+{
+    if(top == NULL)
+    {
+        printf("Empty Stack\n");
+        return;
+    }
+    printf("Front-->");
+    while(top != NULL)
+    {
+        printf("%d-->",top->data);
+        top = top->next;
+    }
+    printf("-->Rear\n");
+}
+
+int main()
+{
+    NODE *top = NULL;
+    int choice;
+    char ch;
+    do
+    {
+        printf("1.push\n2.pop\ndisplay\nChoice: ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+        case 1: printf("Enter element to push: ");
+                int ele;
+                scanf("%d",&ele);
+                insert(&top , ele);
+                break;
+
+        case 2: printf("pop element is: %d\n",delete(&top));
+                break;
+
+        case 3: printf("Stack Elements are: \n");
+                display(top);
+                break;
+
+        default: printf("invalid choice\n");
+        }
+        printf("Do you want to continue: ");
+        scanf(" %c",&ch);
+    }while(ch == 'y');
+    return 0;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1571805358 source:d:\aditya pathak (18is003)\linked list implementation\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1571809398 source:d:\aditya pathak (18is003)\linked list implementation\b2d.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
