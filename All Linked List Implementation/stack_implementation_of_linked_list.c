@@ -26,13 +26,17 @@ void push(NODE **head, int ele) {
 //Pop function to delete top of stack
 //here i am deleting the first node
 int pop(NODE **head) {
-  if(*head == NULL) {
+  NODE *p;
+  p = *head;
+  if(p == NULL) {
     printf("Empty list\n");
-    return;
   }
-  int ele = (*head)->data;
-  *head = (*head)->next;
-  return ele;
+  else {
+    int ele = p->data;
+    *head = p->next;
+    free(p);
+    return ele;  
+  }
 }
 
 int main() {
