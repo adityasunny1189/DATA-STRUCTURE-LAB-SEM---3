@@ -99,6 +99,25 @@ int length(NODE *head) {
   return len;
 }
 
+//function to sort the linked list with T(O) = n^2
+void sort(NODE **head) {
+  NODE *p, *q;
+  int k = 0, temp;
+  p = q = *head;
+  while(k < length(q)) {
+    while(p != NULL) {
+      p = p->next;
+      if((q)->data > p->data) {
+        temp = p->data;
+        p->data = (q)->data;
+        (q)->data = temp;
+      }
+    }
+    p = *head;
+    k++;
+  }
+}
+
 //find the middle element
 void middle(NODE *head, int len) {
   NODE *p;
@@ -189,7 +208,7 @@ int main() {
   int choice, ele, pos;
   char ch;
   do {
-    printf("1.insert\n2.delete\n3.display\n4.exit\n5.length\n6.search\n7.middle element\n8.Display Reverse list\n9.display odd nodes\n10.reverse\nChoice: ");
+    printf("1.insert\n2.delete\n3.display\n4.exit\n5.length\n6.search\n7.middle element\n8.Display Reverse list\n9.display odd nodes\n10.reverse\n11.sort\nChoice: ");
     scanf("%d",&choice);
     switch(choice)
     {
@@ -230,6 +249,9 @@ int main() {
               break;
 
       case 10:reverse(&head);
+              break;
+
+      case 11:sort(&head);
               break;
 
       default: printf("Invalid choice\n");
