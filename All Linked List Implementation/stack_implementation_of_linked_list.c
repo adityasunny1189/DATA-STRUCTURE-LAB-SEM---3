@@ -35,8 +35,24 @@ int pop(NODE **head) {
     int ele = p->data;
     *head = p->next;
     free(p);
-    return ele;  
+    return ele;
   }
+}
+
+int mid(NODE *head) {
+  NODE *p, *q;
+  p = head;
+  q = head;
+  int k = 0, m = 0;
+  while(p->next != NULL) {
+    k++;
+    p = p->next;
+  }
+  while(m < k/2) {
+    q = q->next;
+    m++;
+  }
+  return q->data;
 }
 
 int main() {
@@ -45,7 +61,7 @@ int main() {
   NODE *top = NULL;
   do {
     int choice;
-    printf("1.Insert\n2.Delete\nChoice : ");
+    printf("1.Insert\n2.Delete\n3.mid\nChoice : ");
     scanf("%d",&choice);
     switch(choice)
     {
@@ -55,6 +71,9 @@ int main() {
               break;
 
       case 2: printf("Deleted element is %d\n",pop(&top));
+              break;
+
+      case 3: printf("%d\n",mid(top));
               break;
 
       default: printf("Invalid choice\n");
