@@ -118,6 +118,20 @@ void sort(NODE **head) {
   }
 }
 
+//function to delete all occurance of a number
+void deleteAlloccurance(NODE **head, int data) {
+  NODE *p, *q;
+  p = *head;
+  if(p == NULL) {
+    printf("Empty list\n");
+    return;
+  }
+  do {
+    /* code */
+
+  } while(p != NULL);
+}
+
 //find the middle element
 void middle(NODE *head, int len) {
   NODE *p;
