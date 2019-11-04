@@ -121,7 +121,7 @@ void sort(NODE **head) {
 //function to delete all occurance of a number
 void deleteAlloccurance(NODE **head, int x) {
   NODE *p, *q, *r;
-    p = *head;
+    p = q = *head;
     while(p != NULL) {
     if(p->data != x) {
         q = p;
