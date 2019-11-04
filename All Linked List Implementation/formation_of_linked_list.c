@@ -119,17 +119,27 @@ void sort(NODE **head) {
 }
 
 //function to delete all occurance of a number
-void deleteAlloccurance(NODE **head, int data) {
-  NODE *p, *q;
-  p = *head;
-  if(p == NULL) {
-    printf("Empty list\n");
-    return;
+void deleteAlloccurance(NODE **head, int x) {
+  NODE *p, *q, *r;
+    p = *head;
+    while(p != NULL) {
+    if(p->data != x) {
+        q = p;
+        p = p->next;
+        if(p->data == x) {
+            r = p->next;
+            free(p);
+            p = r;
+            q->next = p;
+        }
+    }
+    else {
+        r = p;
+        p = p->next;
+        q->next = p;
+        free(r);
+    }
   }
-  do {
-    /* code */
-
-  } while(p != NULL);
 }
 
 //find the middle element
@@ -222,7 +232,7 @@ int main() {
   int choice, ele, pos;
   char ch;
   do {
-    printf("1.insert\n2.delete\n3.display\n4.exit\n5.length\n6.search\n7.middle element\n8.Display Reverse list\n9.display odd nodes\n10.reverse\n11.sort\nChoice: ");
+    printf("1.insert\n2.delete\n3.display\n4.exit\n5.length\n6.search\n7.middle element\n8.Display Reverse list\n9.display odd nodes\n10.reverse\n11.sort\n12.delete all keys\nChoice: ");
     scanf("%d",&choice);
     switch(choice)
     {
@@ -266,6 +276,12 @@ int main() {
               break;
 
       case 11:sort(&head);
+              break;
+
+      case 12:printf("Enter key: ");
+              int key;
+              scanf("%d",&key);
+              deleteAlloccurance(&head,key);
               break;
 
       default: printf("Invalid choice\n");
