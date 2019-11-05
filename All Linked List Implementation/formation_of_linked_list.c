@@ -122,24 +122,29 @@ void sort(NODE **head) {
 void deleteAlloccurance(NODE **head, int x) {
   NODE *p, *q, *r;
     p = q = *head;
-    while(p != NULL) {
-    if(p->data != x) {
-        q = p;
-        p = p->next;
-        if(p->data == x) {
-            r = p->next;
-            free(p);
-            p = r;
-            q->next = p;
-        }
+    if(p->data == x) {
+      p = p->next;
     }
     else {
-        r = p;
-        p = p->next;
-        q->next = p;
-        free(r);
+      while(p != NULL) {
+      if(p->data != x) {
+          q = p;
+          p = p->next;
+          if(p->data == x) {
+              r = p->next;
+              free(p);
+              p = r;
+              q->next = p;
+          }
+      }
+      else {
+          r = p;
+          p = p->next;
+          q->next = p;
+          free(r);
+      }
+    }  
     }
-  }
 }
 
 //find the middle element
