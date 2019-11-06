@@ -118,6 +118,14 @@ void sort(NODE **head) {
   }
 }
 
+//Delete node without passing head node
+void deleteNodeWithoutHead(NODE **node) {
+  NODE *p;
+  p = *node;
+  free(p);
+  *node = (*node)->next;
+}
+
 //function to delete all occurance of a number
 void deleteAlloccurance(NODE **head, int x) {
   NODE *p, *q, *r;
@@ -143,7 +151,7 @@ void deleteAlloccurance(NODE **head, int x) {
           q->next = p;
           free(r);
       }
-    }  
+    }
     }
 }
 
@@ -237,7 +245,7 @@ int main() {
   int choice, ele, pos;
   char ch;
   do {
-    printf("1.insert\n2.delete\n3.display\n4.exit\n5.length\n6.search\n7.middle element\n8.Display Reverse list\n9.display odd nodes\n10.reverse\n11.sort\n12.delete all keys\nChoice: ");
+    printf("1.insert\n2.delete\n3.display\n4.exit\n5.length\n6.search\n7.middle element\n8.Display Reverse list\n9.display odd nodes\n10.reverse\n11.sort\n12.delete all keys\n13.Delete node without passing head\nChoice: ");
     scanf("%d",&choice);
     switch(choice)
     {
@@ -287,6 +295,13 @@ int main() {
               int key;
               scanf("%d",&key);
               deleteAlloccurance(&head,key);
+              break;
+
+      case 13:printf("Enter element to delete: ");
+              scanf("%d",&ele);
+              NODE *nodeToDelete;
+              nodeToDelete = searchNodeOfThisElement(head,ele);
+              deleteNodeWithoutHead(&nodeToDelete);
               break;
 
       default: printf("Invalid choice\n");
