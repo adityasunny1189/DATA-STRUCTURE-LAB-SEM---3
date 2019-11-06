@@ -108,7 +108,9 @@ void displayDoublyLinkedList(NODE *head) {
 
 int main()
 {
-    NODE *head = NULL;
+    NODE *head = getnode();
+    head->data = 0;
+    head->next = head->prev = NULL;
     int choice, ele, pos;
     char ch;
     do {
@@ -140,7 +142,7 @@ int main()
 
             case 6: printf("Enter position of node to delete: ");
                     scanf("%d",&pos);
-                    printf("Deleted element is: %d",deletePosElement(&head,pos));
+                    printf("Deleted element is: %d\n",deletePosElement(&head,pos));
                     break;
 
             case 7: printf("Linked List content\n");
