@@ -121,9 +121,10 @@ void sort(NODE **head) {
 //Delete node without passing head node
 void deleteNodeWithoutHead(NODE **node) {
   NODE *p;
-  p = *node;
+  p = (*node)->next;
+  (*node)->data = p->data;
+  (*node)->next = p->next;
   free(p);
-  *node = (*node)->next;
 }
 
 //function to delete all occurance of a number
