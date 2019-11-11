@@ -127,6 +127,11 @@ void deleteNodeWithoutHead(NODE **node) {
   free(p);
 }
 
+//to print a node present at n'th position from last
+int PrintNthNodeFromLast(NODE **head, int n) {
+
+}
+
 //function to delete all occurance of a number
 void deleteAlloccurance(NODE **head, int x) {
   NODE *p, *q, *r;
