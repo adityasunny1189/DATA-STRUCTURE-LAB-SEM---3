@@ -15,18 +15,31 @@ char pop(struct stack *st) {
   return st->data[st->top--];
 }
 
+int prec(char ch) {
+  switch(ch) {
+    case '[':
+    case ']': return 1;
+
+    case '(':
+    case ')': return 2;
+
+    case '{':
+    case '}':return 3;
+  }
+}
+
 void check(struct stack st) {
   int j = st.top;
   for(int i = 0 ; i <= st.top / 2 ; i++) {
-    if(st.data[i] == st.data[j]) {
+    if(prec(st.data[i]) == prec(st.data[j])) {
       j--;
     }
     else {
-      printf("Not Matched Parenthesis\n");
+      printf("NO\n");
       return;
     }
   }
-  printf("Matched Parenthesis\n");
+  printf("YES\n");
 }
 
 void display(struct stack st) {
@@ -40,14 +53,19 @@ int main() {
   struct stack st;
   st.top = -1;
   char data[20];
-  printf("Enter string: ");
-  scanf("%s",data);
-  for(int i = 0 ; i < strlen(data) ; i++) {
-    push(&st, data[i]);
+  int test_case;
+  scanf("%d",&test_case);
+  for(int t = 0; t < test_case; t++) {
+    // printf("Enter string: ");
+    scanf("%s",data);
+    for(int i = 0 ; i < strlen(data) ; i++) {
+      push(&st, data[i]);
+    }
+    // printf("%d\n",st.top);
+    // printf("String Entered: ");
+    // display(st);
+    check(st);
+    st.top = -1;
   }
-  printf("%d\n",st.top);
-  printf("String Entered: ");
-  display(st);
-  check(st);
-  return;
+  return 0;
 }
