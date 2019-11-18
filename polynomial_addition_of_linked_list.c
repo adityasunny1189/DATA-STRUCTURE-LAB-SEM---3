@@ -17,13 +17,19 @@ NODE *getnode() {
 }
 
 void insert(NODE **head, int coef, int px, int py) {
-  NODE *newN;
+  NODE *newN, *temp;
   newN = getnode();
   newN->data = coef;
   newN->powX = px;
   newN->powY = py;
-  newN->next = *head;
-  *head = newN;
+  temp = *head;
+  if(*head == NULL)
+    *head = newN;
+  else {
+    while(temp->next != NULL)
+      temp = temp->next;
+    temp->next = newN;
+  }
 }
 
 void display(NODE *head) {
