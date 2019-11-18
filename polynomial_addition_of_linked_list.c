@@ -40,6 +40,7 @@ int search(NODE **temp, int coef, int px, int py) {
   while(head != NULL) {
     if(head->powX == px && head->powY == py)
     {
+      printf("%d\t%d\t%d\n",head->data,head->powX,head->powY);
       (*temp)->data += coef;
       return 1;
     }
