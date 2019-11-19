@@ -77,7 +77,7 @@ BST *delete(BST *root, int data) {
     if(root->left && root->right) {
       temp = findMax(root->left);
       root->data = temp->data;
-      root->left = delete(root->left, data);
+      root->left = delete(root->left, root->data);
     }
     else {
       temp = root;
