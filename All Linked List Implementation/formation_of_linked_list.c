@@ -179,24 +179,24 @@ void middle(NODE *head, int len) {
 }
 
 //Search the specific element in linked list
-void search(NODE *head, int ele) {
-  int pos = 1;
-  NODE *p;
-  p = head;
-  if(p == NULL) {
-    printf("Empty list\n");
-    return NULL;
-  }
-  while(p != NULL) {
-    if(ele == p->data) {
-      printf("Element found at: %d\n",pos);
-      return;
-    }
-    p = p->next;
-    pos++;
-  }
-  printf("Element not found\n");
-}
+// void search(NODE *head, int ele) {
+//   int pos = 1;
+//   NODE *p;
+//   p = head;
+//   if(p == NULL) {
+//     printf("Empty list\n");
+//     return NULL;
+//   }
+//   while(p != NULL) {
+//     if(ele == p->data) {
+//       printf("Element found at: %d\n",pos);
+//       return;
+//     }
+//     p = p->next;
+//     pos++;
+//   }
+//   printf("Element not found\n");
+// }
 
 //Display the linked list in reverse order using recursion
 void displayRev(NODE *head) {
@@ -277,10 +277,10 @@ int main() {
       case 5: printf("Length of the linked list is: %d",length(head));
               break;
 
-      case 6: printf("Enter the element to serch: ");
-              scanf("%d",&ele);
-              search(head,ele);
-              break;
+      // case 6: printf("Enter the element to serch: ");
+      //         scanf("%d",&ele);
+      //         search(head,ele);
+      //         break;
 
       case 7: middle(head,length(head));
               break;
@@ -303,12 +303,12 @@ int main() {
               deleteAlloccurance(&head,key);
               break;
 
-      case 13:printf("Enter element to delete: ");
-              scanf("%d",&ele);
-              NODE *nodeToDelete;
-              nodeToDelete = searchNodeOfThisElement(head,ele);
-              deleteNodeWithoutHead(&nodeToDelete);
-              break;
+      // case 13:printf("Enter element to delete: ");
+      //         scanf("%d",&ele);
+      //         NODE *nodeToDelete;
+      //         nodeToDelete = searchNodeOfThisElement(head,ele);
+      //         deleteNodeWithoutHead(&nodeToDelete);
+      //         break;
 
       default: printf("Invalid choice\n");
     }
