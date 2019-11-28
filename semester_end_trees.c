@@ -92,5 +92,31 @@ BST *insert(BST *root, int ele) {
 }
 
 BST *delete(BST *root, int ele) {
-  if()
+  BST *temp;
+  if(root == NULL) {
+    printf("Empty tree\n");
+  }
+  else if(root->data > ele)
+    root->leftChild = delete(root->leftChild, ele);
+  else if(root->data < ele)
+    root->rightChild = delete(root->rightChild, ele);
+  else {
+    if(root->leftChild && root->rightChild) {
+      temp = findMaximumElement(root->leftChild);
+      root->data = temp->data;
+      root->leftChild = delete(root->leftChild, root->data);
+    }
+
+  }
+}
+
+int leastCommonAncestor(BST *root, int n1, int n2) {
+  while(1) {
+    if((n1 < root->data && n2 > root->data) || (n1 > root->data && n2 < root->data))
+      return root->data;
+    else if(n1 < root->data)
+      root = root->left;
+    else
+      root = root->right;
+  }
 }
