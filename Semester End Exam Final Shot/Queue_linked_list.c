@@ -23,6 +23,19 @@ void insert(Node **head,int ele) {
   p->next = temp;
 }
 
+void reverse(Node **head) {
+  Node *prev = NULL;
+  Node *cur = *head;
+  Node *next;
+  while(cur != NULL) {
+    next = cur->next;
+    cur->next = prev;
+    prev = cur;
+    cur = next;
+  }
+  *head = prev;
+}
+
 void delete(Node **head) {
   Node *p = *head;
   int ele = p->data;
@@ -57,6 +70,8 @@ int main() {
               break;
 
       case 3: display(head);break;
+
+      case 4: reverse(&head);break;
 
       default: printf("Invalid option!!\n");
     }
