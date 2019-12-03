@@ -64,8 +64,8 @@ Node *delete_firstNode(Node **head) {
     *head = NULL;
     return *head;
   }
-  free(*head);
   *head = temp->next;
+  free(temp);
   return *head;
 }
 
