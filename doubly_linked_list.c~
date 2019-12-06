@@ -10,7 +10,6 @@ struct Node {
 
 typedef struct Node NODE;
 
-//Initializing a global node which contains the last node
 NODE *lastNode = NULL;
 
 NODE *getNode() {
@@ -44,54 +43,12 @@ void insert(NODE **head, int data_field, int data) {
                   lastNode = lastNode->next;
 }
 
-void swapNode(NODE **head, int m, int n, int length) {
-         NODE *temp = *head, *Node_m = *head;
-         int temp2;
-         int p;
-         if(m > length || n > length) {
-                  printf("Node not present\n");
-                  return;
-         }
-         else if(m > n)
-                  p = m;
-         else if(n > m)
-                  p = n;
-         else {
-                  printf("Equal nodes\n");
-                  return;
-         }
-         for(int i = 0; i < p; i++) {
-                  if(i == m || i == n) {
-                           temp2 = temp->data;
-                           break;
-                  }
-                  temp = temp->next;
-         }
-         for(int j = 0; j < p; j++) {
-                  Node_m = Node_m->next;
-         }
-         temp->data = Node_m->data;
-         Node_m->data = temp2;
+void swapNode(NODE **head, int m, int n) {
+         
 }
 
 NODE *deleteFirstNode(NODE **head) {
-         NODE *temp = lastNode;
-         if(*head == NULL) {
-                  printf("Empty List\n");
-                  return NULL;         
-         }
-         while(temp->prev != NULL)
-                  temp = temp->prev;
-         if(temp->next == NULL) {
-                  printf("Deleted node is: %d\n",temp->data);                 
-                  lastNode = *head = NULL;
-                  return *head;
-         }
-         printf("Deleted node is: %d\n",temp->data);
-         *head = (*head)->next;
-         (*head)->prev = NULL;
-         free(temp);
-         return *head;
+
 }
 
 void display(NODE *head) {
@@ -135,7 +92,7 @@ int main() {
 
                            case 4:  printf("Enter positions(m and n): ");
                                     scanf("%d %d",&m,&n);
-                                    swapNode(&head, m, n, start->data);
+                                    swapNode(&head, m, n);
                                     break;
 
                            default: printf("Invalid Option!!\n");
