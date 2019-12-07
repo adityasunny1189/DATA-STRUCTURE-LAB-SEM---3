@@ -33,19 +33,19 @@ int prec(char ch) {
          }
 }
 
-int main() {
+void answer_checker_function() {
          S.top = -1;
          char bracket_expression[15];
          printf("Enter valid bracket sequence: ");
          scanf("%s",bracket_expression);
          for(int i = 0; i < strlen(bracket_expression); i++) {
-                  if(bracket_expression[i] == '(' || bracket_expression[i] == '{' ||bracket_expression[i] == '[') {
+                  if(bracket_expression[i] == '(' || bracket_expression[i] == '{' ||          bracket_expression[i] == '[') {
                            push(bracket_expression[i]);
                   }
                   else {
                            if(prec(bracket_expression[i]) != prec(pop())) {
-                                    printf("NO\n");
-                                    return 0;
+                                 printf("NO\n");
+                                 return 0;
                            } 
                   }
          }
@@ -54,6 +54,15 @@ int main() {
                   return 0;
          }
          printf("YES\n");
+}
+
+int main() {
+         int test_case;
+         printf("Enter the no of test_case: ");
+         scanf("%d",&test_case);
+         for(int t = 0; t < test_case; t++) {
+                  answer_checker_function();
+         }
          return 0;
 }
 
