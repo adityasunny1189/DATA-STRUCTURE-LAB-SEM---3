@@ -15,11 +15,6 @@ int main(int argc , char *argv[]) {
         exit(1);
     }
     destinationFile = fopen(argv[2], "w");
-    if(destinationFile == NULL) {
-        printf("Target not located\n");
-        fclose(sourcefile);
-        exit(1);
-    }
     while(1) {
         ch = fgetc(sourceFile);
         if(ch == EOF) 
